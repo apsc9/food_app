@@ -9,10 +9,6 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 //import Grocery from "./components/Grocery";
 
-export const styleCard = {
-    backgroundColor: "#f0f0f0",
-};
-
 // not using keys (not acceptable) <<<< index as a key <<<<<< unique id(best practice)
 const Grocery = lazy(() => import("./components/Grocery"));
 
