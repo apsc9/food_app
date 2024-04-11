@@ -23,7 +23,7 @@ const ItemList = ({items}) => {
                     </div>
                     <div className="w-3/12 p-7">
                         <div className="absolute">
-                            <button className="px-2 py-[0.5] mx-12 my-[110px] rounded-lg bg-black text-white shadow-lg">
+                            <button className="px-2 py-[0.5] mx-9 my-[110px] rounded-lg bg-black text-white shadow-lg">
                                 Add +
                             </button>
                         </div>
