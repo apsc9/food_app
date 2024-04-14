@@ -1,8 +1,9 @@
 import RestaurantCard, {withQuickDelivery} from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 
@@ -12,7 +13,6 @@ const Body = () => {
 
     const RestaurantCardPromoted = withQuickDelivery(RestaurantCard);
 
-    console.log("Body rendered", listOfRestaurants);
     useEffect(() => {
         fetchData();
     },[]);
@@ -24,7 +24,6 @@ const Body = () => {
         //console.log(data);
         const json = await data.json();
         
-        console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
@@ -38,7 +37,12 @@ const Body = () => {
                 </h1>
         );
 
-    return listOfRestaurants.length === 0 ? <Shimmer /> : (
+    const { loggedInUser, setUserName } = useContext(UserContext);
+
+    //console.log("len:", listOfRestaurants);
+    return listOfRestaurants.length === 0 ? (
+        <Shimmer />
+    ) : (
         <div className="body">
             <div className="filter flex">
                 <div className="search m-4 p-4">
@@ -77,7 +81,13 @@ const Body = () => {
                         Top Rated Restaurants
                     </button>
                 </div>
-                
+                <div className="search m-4 p-4 flex items-center">
+                    <label>Username : </label>
+                    <input className="border border-black p-2" 
+                        value={loggedInUser}
+                        onChange={(e) => setUserName(e.target.value)}
+                    />
+                </div>            
             </div>
             <div className="flex flex-wrap">
                 {

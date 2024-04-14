@@ -3,10 +3,6 @@ import {useState} from "react";
 
 const RestaurantCategory = ({ data, showItems, toggleAccordion }) => {
 
-    // const handleClick= () => {
-    //     setShowIndex();
-    // };
-
     return (
         <div>
             {/* Accordian Header */}
@@ -21,11 +17,10 @@ const RestaurantCategory = ({ data, showItems, toggleAccordion }) => {
                     <span>
                         {showItems ? '▲' : '▼'}
                     </span>
-                    {/* <img width="25" height="25" src="https://img.icons8.com/ios/50/circled-chevron-down.png" alt="circled-chevron-down"/> */}
                 </div>
                 {/* Accordian Body */}
 
-                {showItems && <ItemList items={data.itemCards}/>}
+                {showItems && <ItemList items={data.itemCards} />}
             </div>
         </div>
     );
