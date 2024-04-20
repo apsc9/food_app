@@ -3,14 +3,25 @@ import { useState, useContext }  from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
 
     const { loggedInUser } = useContext(UserContext);
-    console.log(loggedInUser);
+    //console.log(loggedInUser);
 
+    // subscribe to the store using selector
+    const cartItems = useSelector((store) => store.cart.items);
+
+    // console.log(cartItems);
+    // if (loggedInUser) {
+    //     setBtnName("Logout");
+    // }
+    
     return (
         <div className="flex justify-between bg-pink-100 shadow-lg m-2">
             <div className="logo-container">
@@ -36,7 +47,12 @@ const Header = () => {
                     <li className="px-2">
                         <Link to="/grocery">Grocery</Link>
                     </li>
-                    <li className="px-2">Cart</li>
+                    <li className="px-2 font-bold">
+                        <Link to="/cart">
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                            Cart: {cartItems.length} items
+                         </Link>
+                    </li>
                     <button 
                         className="login px-2"
                         onClick={() => {
