@@ -15,6 +15,7 @@ const ItemList = ({items}) => {
         <div>
             {items.map((item) => (
                 <div 
+                    data-testid="foodItems"
                     key={item.card.info.id}
                     className="p-2 m-2 border-gray-300 border-b-2 text-left flex justify-between"
                 >
@@ -32,7 +33,7 @@ const ItemList = ({items}) => {
                     </div>
                     <div className="w-3/12 p-7">
                         <div className="absolute">
-                            <button className="px-2 py-[0.5] mx-9 my-[110px] rounded-lg bg-black text-white shadow-lg"
+                            <button className="px-2 py-[0.5] mx-7 my-[80px] rounded-lg bg-black text-white shadow-lg"
                                 onClick={() => handleAddItem(item)} >
                                 Add +
                             </button>

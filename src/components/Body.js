@@ -46,7 +46,9 @@ const Body = () => {
         <div className="body">
             <div className="filter flex">
                 <div className="search m-4 p-4">
-                    <input type="text" 
+                    <input 
+                        type="text" 
+                        data-testid="searchInput"
                         className="border border-solid border-black" 
                         value={searchText}
                         onChange={(e) => {
@@ -93,7 +95,7 @@ const Body = () => {
                 {
                     filteredRestaurant.map(restaurant => (
                         <Link 
-                            key={restaurant.info.id}
+                            key={restaurant?.info.id}
                             to={"/restaurants/"+ restaurant.info.id}
                             style={{ textDecoration: 'none' }}
                         >
